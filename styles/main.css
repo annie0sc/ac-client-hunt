@@ -1,0 +1,14 @@
+h1{
+font-size: very-large;
+color: rgb(223, 139, 216);
+text-align: center;
+}
+main{
+    color: rgba(150, 70, 224, 0.849);
+   text-align: center;
+}
+#location{
+    font-size: large;
+    font-style: italic;
+    color: darkmagenta;
+}
