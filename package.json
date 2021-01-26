@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "package.json": "^2.0.1"
+  },
+  "name": "ac-client-hunt",
+  "description": "This is a repository for GDP.",
+  "version": "1.0.0",
+  "main": "index.html",
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm start",
+    "start": "index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annie0sc/ac-client-hunt.git"
+  },
+  "author": "Annie Chandolu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/annie0sc/ac-client-hunt/issues"
+  },
+  "homepage": "https://github.com/annie0sc/ac-client-hunt#readme"
+}
