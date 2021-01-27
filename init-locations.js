@@ -1,10 +1,10 @@
 export default [
     {
       Name: 'Horizons One',
-      North: 40.344208,
-      West: -94.891494,
-      South: 40.343652,
-      East: -94.8884,
+      North: 40.3589695,
+      West: -94.8831951,
+      South: 40.3589695,
+      East: -94.8831951,
       Notes: 'circle',
       Attachments: '',
       'Quest-Location': 'Horizons One',
