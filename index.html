@@ -10,18 +10,35 @@
         <main>
             <article>
                 <h1>Annie Chandolu</h1>
-                <div id="clockbox"></div>
-                <div class="border" id="welcome">Welcome!</div>
+                <!-- <div id="clockbox"></div> -->
+                <!-- <div class="border" id="welcome">Welcome!</div> -->
                 <br>
-                <div id="location">Welcome to <span id="locationAnwer">?</span></div>
+             <button id="location">Find your location here<span id="locationAnwer"></span></button>
                 <br>
-                <div id="error-message">Error Messages: </div>
-                <div id="device-lat">Device Latitude: </div>
-                <div id="device-long">Device Longitude: </div>
+                <output id="error-message">Error Messages: </output>
+                <output id="device-lat">Device Latitude: </output>
+                <putput id="device-long">Device Longitude: </output>
                
             </article>
         
         </main>
         <script type="module" href="./scripts/main.js"></script>
+        <script>
+        $('#location-button').click(function(){
+        
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position){
+                  console.log(position);
+                  $.get( "http://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude +"&sensor=false", function(data) {
+                    console.log(data);
+                  })
+                  var img = new Image();
+                  img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + position.coords.latitude + "," + position.coords.longitude + "&zoom=13&size=800x400&sensor=false";
+                  $('#output').html(img);
+                });
+                
+            }
+          });
+        </script>
     </body>
 </html>
