@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="author" content="Annie Chandolu" />
         <link rel="stylesheet" href="./styles/main.css">
-        <link rel="module" href="./scripts/main.js">
+        <title>Home</title>
+        
     </head>
     <body>
         <main>
-            <a>
+            <article>
                 <h1>Annie Chandolu</h1>
+                <div class="border" id="welcome">Welcome!</div>
+                <br>
                 <div id="location">Welcome to <span id="locationAnwer">?</span></div>
                 <br>
-                <div id="error-message">Error Messages</div>
-                <div id="device-lat">Device Latitude</div>
-                <div id="device-long">Device Longitude</div>
+                <div id="error-message"></div>
+                <div id="device-lat"></div>
+                <div id="device-long"></div>
                 <!-- window.addEventListener('load', main);
                 locationElement.addEventListener('click', locationHandler);
                 locationElement.addEventListener('touch', locationHandler); -->
-            </a>
+            </article>
             <!-- function locationHandler{
                 locText = await getLocation();
                  set innerHTML =  
             } -->
         </main>
+        <script type="module" href="./scripts/main.js"></script>
     </body>
 </html>
