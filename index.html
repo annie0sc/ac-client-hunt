@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="author" content="Annie Chandolu" />
-        <link rel="stylesheet" href="./styles/main.css">
-        <title>Home</title>
-        
-    </head>
+  <head>
+    
+  <!-- Put Google Analytics immediately after head tag -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZB1HLLVH6V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZB1HLLVH6V');
+    </script>
+    
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="author" content="Annie Chandolu" />
+    <meta name="description" content="Proof of concept for a location app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Hunt PoC</title>
+
+       <!-- Custom styles -->
+
+    <link rel="stylesheet" href="./styles/main.css" />
+
+  </head>
     <body>
         <main>
             <article>
@@ -13,32 +32,19 @@
                 <!-- <div id="clockbox"></div> -->
                 <!-- <div class="border" id="welcome">Welcome!</div> -->
                 <br>
-             <button id="location">Find your location here<span id="locationAnwer"></span></button>
+             <div id="location">Find your location here<span id="locationAnwer"></span></div>
                 <br>
-                <output id="error-message">Error Messages: </output>
-                <output id="device-lat">Device Latitude: </output>
-                <putput id="device-long">Device Longitude: </output>
+                <div id="error-message">Error Messages: </div>
+                <br>
+                <div id="device-lat">Device Latitude: </div>
+                <br>
+                <div id="device-long">Device Longitude:</div>
                
             </article>
         
         </main>
+   <!-- root tags -->
         <script type="module" href="./scripts/main.js"></script>
-        <script>
-        $('#location-button').click(function(){
-        
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position){
-                  console.log(position);
-                  $.get( "http://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude +"&sensor=false", function(data) {
-                    console.log(data);
-                  })
-                  var img = new Image();
-                  img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + position.coords.latitude + "," + position.coords.longitude + "&zoom=13&size=800x400&sensor=false";
-                  $('#output').html(img);
-                });
-                
-            }
-          });
-        </script>
     </body>
+    
 </html>

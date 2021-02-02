@@ -1,58 +1,77 @@
-import locationsArray from '../init-locations.js';
+/**
+ * Main code.
+ * @module tab
+ */
+// import * as dateTime from './dateTime.js';
+// import getJoke from './jokes.js';
+import getLocation from './location.js';
 
-const inside = (device, bounds) => {
- const ans =
-    device.latitude > bounds.South &&
-    device.latitude < bounds.North &&
-    device.longitude > bounds.West &&
-    device.longitude < bounds.East;
-  return ans;
-};
+// define event handlers .........................................................
 
+/**
+ * Wait to get a joke back and then display it.
+ */
+// async function smileHandler() {
+//   const joke = await getJoke();
+//   document.getElementById('smile').innerHTML = joke;
+// }
 
-export default function getLocation() {
-  if (!navigator.geolocation) {
-    document.querySelector('#error-message').innerHTML =
-      'Browser does not support geolocation.';
-  } else {
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0,
-    };
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        document.querySelector('#device-lat').innerHTML = '';
-        document.querySelector('#device-long').innerHTML = '';
-        document.querySelector('#locationAnswer').innerHTML = '?';
-
-        if (position === undefined) {
-          document.querySelector('#error-message').innerHTML =
-            'Browser cannot determine device position (position is undefined).';
-        }
-        const device = position.coords;
-        document.querySelector('#device-lat').innerHTML = device.latitude;
-        document.querySelector('#device-long').innerHTML = device.longitude;
-        const arrayLength = locationsArray.length;
-        for (let i = 0; i < arrayLength; i += 1) {
-          const thisLoc = locationsArray[i];
-          if (inside(device, thisLoc)) {
-            const name = thisLoc.Name;
-            document.querySelector('#locationAnswer').innerHTML = name;
-            const utterance = new SpeechSynthesisUtterance();
-            utterance.text = `Congratulations! You found location ${name}`;
-            window.speechSynthesis.speak(utterance);
-            break;
-          }
-        }
-      },
-      (err) => {
-        const s = `ERROR(${err.code}): ${err.message}`;
-        console.warn(s);
-        document.querySelector('#error-message').innerHTML = err.message;
-      },
-      options,
-    );
-  }
+/**
+ * Wait to get location and then display it.
+ * Location should only be updated in response to a USER GESTURE
+ */
+async function locationHandler() {
+  const locText = await getLocation();
+  document.getElementById('locationAnswer').innerHTML = locText;
 }
+
+function clearErrorText() {
+  document.getElementById('error-message').innerHTML = '';
+}
+
+/**
+ * Logic to execute each time the new tab loads.
+ * Includes a recurring update every n milliseconds.
+ */
+function main() {
+  // assign display elements .............................................
+
+//   const jokeElement = document.getElementById('smile');
+  const locationElement = document.getElementById('location');
+  const errorElement = document.getElementById('error-message');
+
+  errorElement.innerHTML = '';
+
+  // configure event listeners .............................................
+
+//   jokeElement.addEventListener('dblclick', smileHandler);
+//   jokeElement.addEventListener('click', smileHandler);
+  locationElement.addEventListener('click', locationHandler);
+  locationElement.addEventListener('touch', locationHandler);
+  errorElement.addEventListener('click', clearErrorText);
+  errorElement.addEventListener('touch', clearErrorText);
+
+  /** Possible location error:
+   * Geolocation permission has been blocked
+   * as the user has ignored the permission prompt several times.
+   * This can be reset in Page Info which can be accessed by
+   * clicking the lock icon next to the URL.
+   * See https://www.chromestatus.com/features/6443143280984064
+   * for more information.
+   */
+
+  // more startup logic  ...........................................
+
+  const updateDisplay = () => {
+    const { clock, nhour } = dateTime.getClock();
+    const greeting = dateTime.getGreeting(nhour);
+    document.getElementById('clockbox').innerHTML = clock;
+    document.getElementById('greeting').innerHTML = greeting;
+  };
+
+  const refreshMilliseconds = 10000;
+  updateDisplay();
+  setInterval(updateDisplay, refreshMilliseconds);
+}
+
+window.addEventListener('load', main);
