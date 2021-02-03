@@ -1,25 +1,5 @@
-/**
- * Main code.
- * @module tab
- */
-// import * as dateTime from './dateTime.js';
-// import getJoke from './jokes.js';
 import getLocation from './location.js';
 
-// define event handlers .........................................................
-
-/**
- * Wait to get a joke back and then display it.
- */
-// async function smileHandler() {
-//   const joke = await getJoke();
-//   document.getElementById('smile').innerHTML = joke;
-// }
-
-/**
- * Wait to get location and then display it.
- * Location should only be updated in response to a USER GESTURE
- */
 async function locationHandler() {
   const locText = await getLocation();
   document.getElementById('locationAnswer').innerHTML = locText;
