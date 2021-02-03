@@ -8,7 +8,10 @@
 
 ## References
 
-[Denise Case Repo](https://github.com/denisecase/proof-of-concept-hunt)
+1. [Denise Case Repo](https://github.com/denisecase/proof-of-concept-hunt)
 
-[Redstapler for geolocation.](https://redstapler.co/detect-user-location-javascript/)
+1. [Redstapler for geolocation.](https://redstapler.co/detect-user-location-javascript/)
 
+1. [Sumana Reddy](https://github.com/sumana-reddy/sr-client-hunt)
+
+1. [Gundu Pooja](https://github.com/GUNDUPOOJA/gp-client-hunt)
