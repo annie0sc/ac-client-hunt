@@ -42,16 +42,16 @@ function main() {
 
   // more startup logic  ...........................................
 
-  const updateDisplay = () => {
-    const { clock, nhour } = dateTime.getClock();
-    const greeting = dateTime.getGreeting(nhour);
-    document.getElementById('clockbox').innerHTML = clock;
-    document.getElementById('greeting').innerHTML = greeting;
-  };
+//   const updateDisplay = () => {
+//     const { clock, nhour } = dateTime.getClock();
+//     const greeting = dateTime.getGreeting(nhour);
+//     document.getElementById('clockbox').innerHTML = clock;
+//     document.getElementById('greeting').innerHTML = greeting;
+//   };
 
-  const refreshMilliseconds = 10000;
-  updateDisplay();
-  setInterval(updateDisplay, refreshMilliseconds);
-}
+//   const refreshMilliseconds = 10000;
+//   updateDisplay();
+//   setInterval(updateDisplay, refreshMilliseconds);
+ }
 
 window.addEventListener('load', main);
